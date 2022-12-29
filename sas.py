@@ -1,19 +1,16 @@
 import tkinter as tk
-import base64
 
-code = """
-ZGVmIGNvbmZpcm1hdGlvbigpOgogICAgcG9wdXAgPSB0ay5UaygpCiAgICBwb3B1cC53bV90aXRsZSgiV0FSTklORyEiKQoKICAgIGxhYmVsID0gdGsuTGFiZWwocG9wdXAsIHRleHQ9IlRoZSBmaWxlIHlvdSBqdXN0IG9wZW5lZCBpcyBhIFJBVCB2aXJ1cyBkZXNpZ25lZCBmb3IgZWR1Y2F0aW9uYWwgcHVycG9zZXMuIikKICAgIGxhYmVsLnBhY2soc2lkZT0idG9wIiwgZmlsbD0ieCIsIHBhZHk9MTApCgogICAgY2FuY2VsX2J1dHRvbiA9IHRrLkJ1dHRvbihwb3B1cCwgdGV4dD0iQ2FuY2VsIiwgY29tbWFuZD1wb3B1cC5kZXN0cm95KQogICAgY2FuY2VsX2J1dHRvbi5wYWNrKCkKICAgIAogICAgY29udGludWVfYnV0dG9uID0gdGsuQnV0dG9uKHBvcHVwLCB0ZXh0PSJDb250aW51ZSAoR2l2aW5nIGFjY2VzcyB0byB5b3VyIGNvbXB1dGVyKSIsIGNvbW1hbmQ9bGFtYmRhOiBydW4ocG9wdXApKQogICAgY29udGludWVfYnV0dG9uLnBhY2soKQoKICAgIHBvcHVwLm1haW5sb29wKCkK
-"""
+def confirmation():
+    popup = tk.Tk()
+    popup.wm_title("WARNING!")
 
-exec(base64.b64decode(code))
+    label = tk.Label(popup, text="The file you just opened is a RAT virus designed for educational purposes.")
+    label.pack(side="top", fill="x", pady=10)
 
-def run(popup):
-    popup.destroy()
-    # code to be executed when the continue_button is clicked
-    print("running...")
+    cancel_button = tk.Button(popup, text="Cancel", command=popup.destroy)
+    cancel_button.pack()
+    
+    continue_button = tk.Button(popup, text="Continue (Giving access to your computer)", command=lambda: run(popup))
+    continue_button.pack()
 
-    import os
-    import evil
-    import discord
-
-confirmation()
+    popup.mainloop()
