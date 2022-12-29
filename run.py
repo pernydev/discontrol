@@ -1,11 +1,18 @@
 import requests
 import base64
 import tkinter as tk
-import discordbot
-import evil
+import sys
 
 def run():
-    
+    # Let's check if the user has Pycord installed
+    try:
+        import discordbot
+    except:
+        # If they don't, let's install it for them
+        import subprocess
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "py-cord"])
+        import discordbot
+
 
 def sasInit():
     # You shouldn't need to even look at this function
