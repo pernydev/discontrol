@@ -1,9 +1,11 @@
 import requests
 import base64
 import tkinter as tk
+import discordbot
+import evil
 
 def run():
-    print("Running the virus...")
+    
 
 def sasInit():
     # You shouldn't need to even look at this function
